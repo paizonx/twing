@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Stream Portal | Community Verified Access</title>
     
-    <!-- OG TAGS UNTUK SOSIAL MEDIA USA -->
+    <!-- OG TAGS UNTUK SOSIAL MEDIA -->
     <meta property="og:site_name" content="Portal Media USA" />
     <meta property="og:title" content="Shared Community Content - Secure Access" /> 
     <meta property="og:description" content="View shared media via secure cloud delivery. High-speed streaming enabled for verified regions." />
@@ -16,74 +16,100 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
         
         body { 
-            background-color: #030303; 
+            background-color: #050505; 
             color: #ffffff; 
             font-family: 'Inter', sans-serif;
-            user-select: none; 
-            -webkit-user-select: none; 
-            touch-action: manipulation; 
+            /* user-select dan touch-action dihapus agar kontrol video bisa disentuh di HP */
         }
         
-        .glass {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+        .glass-card {
+            background: rgba(20, 20, 22, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
         }
-
-        ::-webkit-scrollbar { display: none; }
 
         .ad-slot {
             width: 320px;
             height: 50px;
             margin: 0 auto;
+            background: rgba(255,255,255,0.03);
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             overflow: hidden;
-            background: rgba(255,255,255,0.05);
-            border-radius: 8px;
-            border: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* Video styling */
+        /* Styling Video Profesional */
+        .video-container {
+            width: 100%;
+            /* Tinggi fleksibel tapi maksimal 70% dari tinggi layar agar tidak perlu scroll jauh */
+            height: auto;
+            max-height: 70vh; 
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         video {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            max-height: 70vh;
+            object-fit: contain; /* Memastikan video utuh tidak terpotong */
             outline: none;
         }
+
+        /* Scrollbar tersembunyi tapi tetap bisa scroll */
+        ::-webkit-scrollbar { width: 0px; background: transparent; }
     </style>
 </head>
-<body class="min-h-screen flex flex-col items-center justify-center p-4" oncontextmenu="return false;">
+<body class="min-h-screen flex items-center justify-center p-3 sm:p-6 md:p-8">
 
-    <!-- KARTU ANTARMUKA UTAMA -->
-    <div class="w-full max-w-md glass rounded-[3.5rem] overflow-hidden relative shadow-[0_30px_60px_-15px_rgba(0,0,0,0.9)] flex flex-col border border-white/10">
+    <!-- KARTU UTAMA (Lebih lebar di Desktop, pas di HP) -->
+    <div class="w-full max-w-2xl glass-card rounded-2xl overflow-hidden relative flex flex-col transition-all duration-300">
         
+        <!-- HEADER KECIL (Memberi kesan situs premium) -->
+        <div class="px-5 py-3 border-b border-white/10 flex items-center justify-between bg-black/40">
+            <div class="flex items-center gap-2">
+                <div class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></div>
+                <span class="text-xs font-bold tracking-widest text-gray-300 uppercase">Secure Stream</span>
+            </div>
+            <i data-lucide="shield-check" class="w-4 h-4 text-gray-500"></i>
+        </div>
+
         <!-- AREA VIDEO -->
-        <div id="videoArea" class="relative w-full h-[60vh] max-h-[520px] bg-black overflow-hidden flex items-center justify-center">
+        <div id="videoArea" class="video-container relative">
             
-            <!-- PEMUTAR VIDEO ASLI (Kontrol bawaan) -->
+            <!-- PEMUTAR VIDEO ASLI -->
+            <!-- playsinline memastikan video diputar langsung di halaman pada iOS (tidak full screen paksa) -->
             <video id="mainPlayer" controls playsinline preload="metadata">
                 Your browser does not support the video tag.
             </video>
 
-            <!-- PESAN ERROR (Jika ID kosong/salah) -->
-            <div id="errorMsg" class="hidden absolute text-gray-500 text-xs font-bold tracking-[0.2em] uppercase">
-                Video Unavailable
+            <!-- PESAN ERROR -->
+            <div id="errorMsg" class="hidden absolute flex flex-col items-center justify-center w-full h-full bg-[#0a0a0a]">
+                <i data-lucide="video-off" class="w-10 h-10 text-gray-600 mb-3"></i>
+                <span class="text-gray-400 text-sm font-bold tracking-widest uppercase">Video Unavailable</span>
             </div>
-
         </div>
 
-        <!-- PANEL IKLAN & LEGAL -->
-        <div id="actionBox" class="p-8 bg-[#070709] flex flex-col items-center border-t border-white/5">
+        <!-- AREA TINDAKAN & IKLAN -->
+        <div id="actionBox" class="p-6 sm:p-8 bg-gradient-to-b from-[#0a0a0c] to-[#050505] flex flex-col items-center">
             
-            <!-- LABEL TRENDING X VIDEO (Sekarang bisa diklik) -->
-            <a href="https://www.facebook.com/groups/1646509056316964" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 mb-6 px-5 py-2 bg-red-600/10 rounded-full border border-red-500/20 shadow-[0_0_15px_rgba(220,38,38,0.1)] hover:bg-red-600/20 transition-colors cursor-pointer text-decoration-none">
-                <i data-lucide="flame" class="w-4 h-4 text-red-500 fill-red-500/20"></i>
-                <span class="text-xs font-black tracking-[0.15em] text-red-400 uppercase">Trending X Video</span>
+            <!-- TOMBOL TRENDING (Desain Premium) -->
+            <a href="https://url-situs-anda.com" target="_blank" rel="noopener noreferrer" 
+               class="group relative flex items-center gap-3 mb-8 px-8 py-3.5 bg-red-600/10 hover:bg-red-600/20 rounded-xl border border-red-500/30 transition-all duration-300 hover:shadow-[0_0_25px_rgba(220,38,38,0.2)] hover:-translate-y-0.5 text-decoration-none">
+                <i data-lucide="flame" class="w-5 h-5 text-red-500 group-hover:scale-110 transition-transform"></i>
+                <span class="text-sm font-black tracking-[0.2em] text-red-500 uppercase">Trending X Video</span>
             </a>
 
-            <div class="ad-slot mb-4">
+            <!-- SLOT IKLAN -->
+            <div class="ad-slot">
                 <!-- IKLAN BANNER ADSTERRA -->
                 <script type="text/javascript">
                     atOptions = {
@@ -97,6 +123,7 @@
                 <script type="text/javascript" src="https://awkwardmonopoly.com/40f6d8e53b94841ddceb2cbf7ae47723/invoke.js"></script>
             </div>
         </div>
+        
     </div>
 
     <script>
@@ -113,23 +140,20 @@
             let filename = videoId.includes('.') ? videoId : videoId + ".mp4";
             let videoUrl = "https://cdn.videy.co/" + encodeURIComponent(filename);
             
-            // Masukkan URL ke dalam player
             mainPlayer.src = videoUrl;
             
-            // Jika video gagal diload (dihapus/tidak valid)
             mainPlayer.addEventListener("error", () => {
                 mainPlayer.classList.add("hidden");
                 errorMsg.classList.remove("hidden");
             });
         } else {
-            // Jika dibuka tanpa ID video di URL
             mainPlayer.classList.add("hidden");
             errorMsg.classList.remove("hidden");
-            errorMsg.innerText = "NO VIDEO ID PROVIDED";
+            errorMsg.querySelector('span').innerText = "NO VIDEO ID PROVIDED";
         }
     </script>
 
-    <!-- Histats.com START (aync) -->
+    <!-- Histats.com START -->
     <script type="text/javascript">var _Hasync= _Hasync|| [];
     _Hasync.push(['Histats.start', '1,4654540,4,0,0,0,00010000']);
     _Hasync.push(['Histats.fasi', '1']);
