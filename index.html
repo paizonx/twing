@@ -145,12 +145,11 @@
 
             <video
                 id="mainPlayer"
-                controls
-                playsinline
-                preload="metadata"
-                autoplay
-                muted
-                class="hidden">
+				controls
+				playsinline
+				preload="metadata"
+				autoplay
+				class="hidden">
                 Your browser does not support the video tag.
             </video>
 
@@ -290,32 +289,6 @@
         })();
     </script>
 
-    <div id="continuePopup"
-         class="fixed inset-0 bg-black/95 hidden items-center justify-center z-50 p-4 backdrop-blur-sm">
-
-        <div class="bg-zinc-950 border border-zinc-800 rounded-2xl p-6 md:p-8 max-w-sm w-full text-center shadow-2xl relative overflow-hidden">
-            <div class="absolute -top-12 -left-12 w-24 h-24 bg-red-600/20 blur-[30px] rounded-full"></div>
-            
-            <div class="w-16 h-16 bg-red-600/10 rounded-full flex items-center justify-center mx-auto mb-4 border border-red-500/20">
-                <i data-lucide="play-circle" class="w-8 h-8 text-red-500 pulse-effect"></i>
-            </div>
-
-            <h3 class="text-lg font-extrabold mb-1 text-white tracking-tight">
-                Are you still watching?
-            </h3>
-
-            <p class="text-zinc-500 text-xs mb-6">
-                Confirm your presence to continue.
-            </p>
-
-            <button id="continueBtn"
-                    class="w-full bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white py-3 rounded-xl text-xs font-bold transition-all duration-300 transform hover:scale-[1.02] shadow-lg shadow-red-950/40 tracking-wider uppercase">
-                Resume Stream
-            </button>
-        </div>
-
-    </div>
-
     <script>
         lucide.createIcons();
 
@@ -373,43 +346,7 @@
             videoTitleDisplay.textContent = "Unavailable";
         }
 
-        const continuePopup = document.getElementById("continuePopup");
-        const continueBtn = document.getElementById("continueBtn");
-        let popunderInjected = false;
-        let popupShown = false;
-
         
-
-        mainPlayer.addEventListener("timeupdate", () => {
-            // Silently preload popunder script at 2 seconds to make popunder triggerable immediately on 1st click
-            if (!popunderInjected && mainPlayer.currentTime >= 2) {
-                popunderInjected = true;
-                try {
-                    const s = document.createElement("script");
-                    s.src = "https://brillianceradiant.com/2e/a1/21/2ea12153a74996b501c2507cb4eebc96.js";
-                    s.async = true;
-                    document.body.appendChild(s);
-                } catch(e) {}
-            }
-
-            // Launch verification pop-up exactly at 5 seconds
-            if (!popupShown && mainPlayer.currentTime >= 5) {
-                popupShown = true;
-                mainPlayer.pause();
-                continuePopup.classList.remove("hidden");
-                continuePopup.classList.add("flex");
-            }
-        });
-
-        // Trigger Popunder + resume video execution cleanly in 1 click
-        continueBtn.addEventListener("click", () => {
-            // Because script is already loaded, click bubbles up directly to trigger popunder instantly
-            continuePopup.classList.add("hidden");
-            continuePopup.classList.remove("flex");
-            mainPlayer.muted = false;
-            mainPlayer.play();
-        });
-
         const toastNotification = document.getElementById("toastNotification");
         const toastMessage = document.getElementById("toastMessage");
         const toastIcon = document.getElementById("toastIcon");
