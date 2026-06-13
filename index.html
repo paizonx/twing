@@ -1,26 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" oncontextmenu="return false;" ondragstart="return false;" onselectstart="return false;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Stream Portal | Community Verified Access</title>
+    
     <meta property="og:site_name" content="Portal Media USA">
     <meta property="og:title" content="Shared Community Content - Secure Access">
     <meta property="og:description" content="View shared media via secure cloud delivery. High-speed streaming enabled for verified regions.">
     <meta property="og:image" content="https://vidley.pw/tombolplay.jpg">
     <meta property="og:type" content="website">
+    
     <meta name="description" content="Watch trending community shared videos through secure cloud streaming access.">
     <meta name="robots" content="index,follow">
     
+    <!-- External Libraries -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://quge5.com/88/tag.min.js" data-zone="249352" async data-cfasync="false"></script>
     
+    <!-- AD NETWORK SCRIPTS -->
+    <script async src="https://al5sm.com/tag.min.js" data-zone="11140214"></script>
+    <script async src="https://n6wxm.com/vignette.min.js" data-zone="11140218"></script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
         
         * {
             box-sizing: border-box;
+            /* Mencegah seleksi teks (Copy-Paste) */
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+            -webkit-touch-callout: none !important;
         }
         
         body {
@@ -28,6 +40,8 @@
             color: #fff;
             font-family: 'Inter', sans-serif;
             min-height: 100vh;
+            /* Mencegah drag elemen */
+            -webkit-user-drag: none;
         }
         
         .glass-card {
@@ -50,13 +64,13 @@
             height: 100%;
             max-height: 70vh;
             object-fit: contain;
+            pointer-events: auto; /* Tetap izinkan interaksi dengan video player */
         }
         
         ::-webkit-scrollbar {
             width: 0;
         }
     </style>
-    
 </head>
 <body class="flex items-center justify-center p-3 md:p-6">
     <div class="w-full max-w-2xl glass-card rounded-2xl overflow-hidden">
@@ -83,6 +97,47 @@
     </div>
     
     <script>
+        // 1. Proteksi Keyboard (Memblokir F12, Ctrl+U, Ctrl+Shift+I, Ctrl+S)
+        document.addEventListener('keydown', function(e) {
+            // F12
+            if (e.key === 'F12') {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl + Shift + I (Inspect), Ctrl + Shift + J (Console), Ctrl + Shift + C (Elements)
+            if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl + U (View Source)
+            if (e.ctrlKey && (e.key === 'U' || e.key === 'u')) {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl + S (Save Page)
+            if (e.ctrlKey && (e.key === 'S' || e.key === 's')) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // 2. Proteksi Klik Kanan (Sudah dihandle oleh oncontextmenu di HTML, tapi ini lapisan tambahan)
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        // 3. Deteksi Pembukaan DevTools (Metode sederhana berbasis ukuran window)
+        setInterval(function() {
+            const widthThreshold = window.outerWidth - window.innerWidth > 160;
+            const heightThreshold = window.outerHeight - window.innerHeight > 160;
+            if (widthThreshold || heightThreshold) {
+                // Jika devtools terdeteksi terbuka, alihkan atau kosongkan halaman
+                document.body.innerHTML = '<div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#000;color:#fff;font-family:sans-serif;"><h1>Access Denied</h1></div>';
+            }
+        }, 1000);
+
+        // 4. Logika Video Player Asli
         document.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
             
@@ -124,6 +179,6 @@
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
         })();
     </script>
-
 </body>
 </html>
+
