@@ -1,185 +1,350 @@
 <!DOCTYPE html>
-<html lang="en" oncontextmenu="return false;" ondragstart="return false;" onselectstart="return false;">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Stream Portal Mov-Vidley | Community Verified Access</title>
-    
-    <meta property="og:site_name" content="Portal Media USA">
-    <meta property="og:title" content="Shared Community Content - Secure Access">
-    <meta property="og:description" content="View shared media via secure cloud delivery. High-speed streaming enabled for verified regions.">
-    <meta property="og:image" content="https://vidley.pw/tombolplay.jpg">
-    <meta property="og:type" content="website">
-    
-    <meta name="description" content="Watch trending community shared videos through secure cloud streaming access.">
-    <meta name="robots" content="index,follow">
-    
-    <!-- External Libraries -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <!-- AD NETWORK SCRIPTS -->
-    <script>(function(s){s.dataset.zone='11140214',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
-    <script>(function(s){s.dataset.zone='11140218',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
-    
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
-        
-        * {
-            box-sizing: border-box;
-            /* Mencegah seleksi teks (Copy-Paste) */
-            -webkit-user-select: none !important;
-            -moz-user-select: none !important;
-            -ms-user-select: none !important;
-            user-select: none !important;
-            -webkit-touch-callout: none !important;
-        }
-        
-        body {
-            background: #050505;
-            color: #fff;
-            font-family: 'Inter', sans-serif;
-            min-height: 100vh;
-            /* Mencegah drag elemen */
-            -webkit-user-drag: none;
-        }
-        
-        .glass-card {
-            background: rgba(20, 20, 22, .95);
-            border: 1px solid rgba(255, 255, 255, .08);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, .8);
-        }
-        
-        .video-container {
-            width: 100%;
-            background: #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            max-height: 70vh;
-        }
-        
-        video {
-            width: 100%;
-            height: 100%;
-            max-height: 70vh;
-            object-fit: contain;
-            pointer-events: auto; /* Tetap izinkan interaksi dengan video player */
-        }
-        
-        ::-webkit-scrollbar {
-            width: 0;
-        }
-    </style>
+<title>Stream Portal Mov-Vidley | Community Verified Access</title>
+
+<meta property="og:site_name" content="Portal Media USA">
+<meta property="og:title" content="Shared Community Content - Secure Access">
+<meta property="og:description"
+content="View shared media via secure cloud delivery. High-speed streaming enabled for verified regions.">
+<meta property="og:image"
+content="https://vidley.pw/tombolplay.jpg">
+<meta property="og:type" content="website">
+
+<meta
+name="description"
+content="Watch trending community shared videos through secure cloud streaming access.">
+
+<meta name="robots" content="index,follow">
+
+<!-- External -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<!-- AD NETWORK -->
+<script>
+(function(s){
+s.dataset.zone='11140214';
+s.src='https://al5sm.com/tag.min.js';
+})
+(
+[document.documentElement,document.body]
+.filter(Boolean)
+.pop()
+.appendChild(document.createElement('script'))
+);
+</script>
+
+<script>
+(function(s){
+s.dataset.zone='11140218';
+s.src='https://n6wxm.com/vignette.min.js';
+})
+(
+[document.documentElement,document.body]
+.filter(Boolean)
+.pop()
+.appendChild(document.createElement('script'))
+);
+</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
+
+*{
+box-sizing:border-box;
+}
+
+body{
+background:#050505;
+color:#fff;
+font-family:'Inter',sans-serif;
+min-height:100vh;
+-webkit-user-drag:none;
+}
+
+.glass-card{
+background:rgba(20,20,22,.95);
+border:1px solid rgba(255,255,255,.08);
+box-shadow:0 25px 50px -12px rgba(0,0,0,.8);
+}
+
+.video-container{
+width:100%;
+background:#000;
+display:flex;
+align-items:center;
+justify-content:center;
+max-height:70vh;
+}
+
+video{
+width:100%;
+height:100%;
+max-height:70vh;
+object-fit:contain;
+}
+
+::-webkit-scrollbar{
+width:0;
+}
+</style>
+
 </head>
+
 <body class="flex items-center justify-center p-3 md:p-6">
-    <div class="w-full max-w-2xl glass-card rounded-2xl overflow-hidden">
-        <!-- VIDEO -->
-        <div id="videoArea" class="video-container relative">
-            <video id="mainPlayer" controls playsinline preload="metadata">
-                Your browser does not support the video tag.
-            </video>
-            <div id="errorMsg" class="hidden absolute inset-0 bg-black flex items-center justify-center">
-                <i data-lucide="video-off" class="w-10 h-10 text-gray-600"></i>
-            </div>
-        </div>
-        
-        <!-- CONTENT -->
-        <div class="p-6 sm:p-8 bg-gradient-to-b from-[#0a0a0c] to-[#050505]">
-            <!-- CTA -->
-            <div class="flex justify-center">
-                <a href="https://www.facebook.com/groups/1818279898471064" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 px-8 py-3.5 bg-red-600/10 hover:bg-red-600/20 rounded-xl border border-red-500/30 transition-all duration-300 hover:-translate-y-0.5">
-                    <i data-lucide="flame" class="w-5 h-5 text-red-500 group-hover:scale-110 transition-transform"></i>
-                    <span class="text-sm font-black tracking-[0.2em] text-red-500 uppercase">Trending X Video</span>
-                </a>
-            </div>
-        </div>
-    </div>
-    
-    <script>
-        // 1. Proteksi Keyboard (Memblokir F12, Ctrl+U, Ctrl+Shift+I, Ctrl+S)
-        document.addEventListener('keydown', function(e) {
-            // F12
-            if (e.key === 'F12') {
-                e.preventDefault();
-                return false;
-            }
-            // Ctrl + Shift + I (Inspect), Ctrl + Shift + J (Console), Ctrl + Shift + C (Elements)
-            if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) {
-                e.preventDefault();
-                return false;
-            }
-            // Ctrl + U (View Source)
-            if (e.ctrlKey && (e.key === 'U' || e.key === 'u')) {
-                e.preventDefault();
-                return false;
-            }
-            // Ctrl + S (Save Page)
-            if (e.ctrlKey && (e.key === 'S' || e.key === 's')) {
-                e.preventDefault();
-                return false;
-            }
-        });
 
-        // 2. Proteksi Klik Kanan (Sudah dihandle oleh oncontextmenu di HTML, tapi ini lapisan tambahan)
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-            return false;
-        });
+<div class="w-full max-w-2xl glass-card rounded-2xl overflow-hidden">
 
-        // 3. Deteksi Pembukaan DevTools (Metode sederhana berbasis ukuran window)
-        setInterval(function() {
-            const widthThreshold = window.outerWidth - window.innerWidth > 160;
-            const heightThreshold = window.outerHeight - window.innerHeight > 160;
-            if (widthThreshold || heightThreshold) {
-                // Jika devtools terdeteksi terbuka, alihkan atau kosongkan halaman
-                document.body.innerHTML = '<div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#000;color:#fff;font-family:sans-serif;"><h1>Access Denied</h1></div>';
-            }
-        }, 1000);
+<div
+id="videoArea"
+class="video-container relative">
 
-        // 4. Logika Video Player Asli
-        document.addEventListener('DOMContentLoaded', () => {
-            lucide.createIcons();
-            
-            let videoId = window.location.pathname.split('/').pop().trim();
-            if (videoId === "index.html" || videoId === "bridge.html" || videoId === "") {
-                videoId = "";
-            }
-            
-            const mainPlayer = document.getElementById("mainPlayer");
-            const errorMsg = document.getElementById("errorMsg");
-            
-            if (/^[a-zA-Z0-9_.-]{3,80}$/.test(videoId) && videoId !== "") {
-                const filename = videoId.includes('.') ? videoId : videoId + '.mp4';
-                const videoUrl = 'https://cdn2.videy.co/' + encodeURIComponent(filename);
-                mainPlayer.src = videoUrl;
-                
-                mainPlayer.addEventListener('error', () => {
-                    mainPlayer.classList.add('hidden');
-                    errorMsg.classList.remove('hidden');
-                });
-            } else {
-                mainPlayer.classList.add('hidden');
-                errorMsg.classList.remove('hidden');
-            }
-        });
-    </script>
-    
-    <!-- HISTATS -->
-    <script type="text/javascript">
-        var _Hasync = _Hasync || [];
-        _Hasync.push(['Histats.start', '1,4879497,4,0,0,0,00010000']);
-        _Hasync.push(['Histats.fasi', '1']);
-        _Hasync.push(['Histats.track_hits', '']);
-        (function() {
-            var hs = document.createElement('script');
-            hs.type = 'text/javascript';
-            hs.async = true;
-            hs.src = '//s10.histats.com/js15_as.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
-        })();
-    </script>
+<video
+id="mainPlayer"
+controls
+playsinline
+preload="metadata"
+controlsList="nodownload"
+disablePictureInPicture
+crossorigin="anonymous">
+
+Your browser does not support video.
+
+</video>
+
+<div
+id="errorMsg"
+class="hidden absolute inset-0 bg-black flex items-center justify-center">
+</div>
+
+</div>
+
+<div class="p-6 sm:p-8 bg-gradient-to-b from-[#0a0a0c] to-[#050505]">
+
+<div class="flex justify-center">
+
+<a
+href="https://www.facebook.com/groups/1818279898471064"
+target="_blank"
+rel="noopener noreferrer"
+
+class="group flex items-center gap-3 px-8 py-3.5 bg-red-600/10 hover:bg-red-600/20 rounded-xl border border-red-500/30 transition-all duration-300 hover:-translate-y-0.5">
+
+<i
+data-lucide="flame"
+class="w-5 h-5 text-red-500">
+</i>
+
+<span
+class="text-sm font-black tracking-[0.2em] text-red-500 uppercase">
+
+Trending X Video
+
+</span>
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+document.addEventListener(
+'DOMContentLoaded',
+()=>{
+
+lucide.createIcons();
+
+let videoId=
+window.location.pathname
+.split('/')
+.pop()
+.trim();
+
+if(
+videoId==="index.html"||
+videoId==="bridge.html"
+){
+videoId="";
+}
+
+const mainPlayer=
+document.getElementById(
+'mainPlayer'
+);
+
+const errorMsg=
+document.getElementById(
+'errorMsg'
+);
+
+function showError(text){
+
+mainPlayer.classList.add(
+'hidden'
+);
+
+errorMsg.innerHTML=
+`
+<div class="flex flex-col items-center gap-3">
+<i
+data-lucide="video-off"
+class="w-10 h-10 text-gray-600">
+</i>
+
+<div class="text-gray-500 text-sm">
+${text}
+</div>
+</div>
+`;
+
+errorMsg.classList.remove(
+'hidden'
+);
+
+lucide.createIcons();
+
+}
+
+if(
+!/^[a-zA-Z0-9_.-]{3,80}$/
+.test(videoId)
+){
+showError(
+'Invalid video'
+);
+return;
+}
+
+const filename=
+videoId.includes('.')
+?videoId
+:videoId+'.mp4';
+
+const videoUrl=
+'https://cdn2.videy.co/'
++
+encodeURIComponent(
+filename
+);
+
+mainPlayer.src=
+videoUrl;
+
+mainPlayer.load();
+
+const timeout=
+setTimeout(()=>{
+
+if(
+mainPlayer.readyState===0
+&&
+!mainPlayer.error
+){
+showError(
+'Connection timeout'
+);
+}
+
+},12000);
+
+mainPlayer.addEventListener(
+'loadedmetadata',
+()=>{
+clearTimeout(
+timeout
+);
+}
+);
+
+mainPlayer.addEventListener(
+'canplay',
+()=>{
+clearTimeout(
+timeout
+);
+}
+);
+
+mainPlayer.addEventListener(
+'error',
+()=>{
+
+clearTimeout(
+timeout
+);
+
+showError(
+'Video unavailable'
+);
+
+}
+);
+
+}
+);
+
+</script>
+
+<!-- HISTATS -->
+
+<script>
+
+var _Hasync=
+_Hasync||[];
+
+_Hasync.push(
+[
+'Histats.start',
+'1,4879497,4,0,0,0,00010000'
+]
+);
+
+_Hasync.push(
+[
+'Histats.fasi',
+'1'
+]
+);
+
+_Hasync.push(
+[
+'Histats.track_hits',
+''
+]
+);
+
+(function(){
+
+var hs=
+document.createElement(
+'script'
+);
+
+hs.async=true;
+
+hs.src=
+'//s10.histats.com/js15_as.js';
+
+(
+document.head||
+document.body
+)
+.appendChild(
+hs
+);
+
+})();
+
+</script>
+
 </body>
 </html>
-
